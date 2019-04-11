@@ -4,6 +4,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.mail.pojo.User;
 import com.mail.service.UserService;
 import com.mail.util.PassUtil;
+import com.mail.util.SensitiveWordUtil;
+import com.mail.util.SensitiveWordUtil.MatchType;
 
 @Controller
 @RequestMapping("")
@@ -34,21 +37,25 @@ public class UserController {
 		return mv;
 	}
 	
-	@RequestMapping("addUser")
+	@RequestMapping(value = "addUser",produces = "text/plain;charset=utf-8")
 	public ModelAndView addUser(String username,String password) throws NoSuchAlgorithmException {
 		Map map = new HashMap();
+		Set<String> sensitiveWord = userService.getSensitiveWordSet();
+		/*SensitiveWordUtil wordUtil = new SensitiveWordUtil();
+		wordUtil.initSensitiveWordsMap(sensitiveWord);
+		System.out.println(wordUtil.getSensitiveWords(username, MatchType.MAX_MATCH));*/
 		map.put("username", username);
 		map.put("pwdHash", PassUtil.digestString(password, "SHA"));
 		map.put("password", password);
 		userService.add(map);
-		ModelAndView mv = new ModelAndView("redirect:/listUser");
+		ModelAndView mv = new ModelAndView("redirect:/listUser?page=0");
 		return mv;
 	}
 	
 	@RequestMapping("deleteUser")
 	public ModelAndView deleteUser(String username) {
 		userService.delete(username);
-		ModelAndView mv = new ModelAndView("redirect:/listUser");
+		ModelAndView mv = new ModelAndView("redirect:/listUser?page=0");
 		return mv;
 	}
 	
@@ -66,7 +73,7 @@ public class UserController {
 		String pass = user.getPassword();
 		user.setPwdHash(pass);
 		userService.editPassword(user);
-		ModelAndView mv = new ModelAndView("redirect:/listUser");
+		ModelAndView mv = new ModelAndView("redirect:/listUser?page=0");
 		return mv;
 	}
 	//后台登录

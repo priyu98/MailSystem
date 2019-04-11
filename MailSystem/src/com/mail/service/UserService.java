@@ -2,6 +2,7 @@ package com.mail.service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import com.mail.pojo.User;
 
@@ -11,4 +12,5 @@ public interface UserService {
 	void delete(String username);
 	void editPassword(User user);
 	User getUserByUserid(String username);
+	Set<String> getSensitiveWordSet();
 }

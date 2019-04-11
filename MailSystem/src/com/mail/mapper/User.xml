@@ -33,4 +33,8 @@
         <select id="count">
         	select count(*) from users
         </select>  
+        
+        <select id="SensitiveWordSet" resultType="String">
+        	select minganci from minganci
+        </select>
     </mapper>

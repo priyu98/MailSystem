@@ -1,7 +1,9 @@
 package com.mail.service.impl;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -49,6 +51,15 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		//return userMapper.getByUserid(username);
 		return (User)dao.findForObject("UserMapper.getByUserid", username);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public Set<String> getSensitiveWordSet() {
+		// TODO Auto-generated method stub
+		List<String> result=(List<String>)dao.findForList("UserMapper.SensitiveWordSet", null);
+		Set<String> set = new HashSet<>(result);
+		return set;
 	}
 
 
