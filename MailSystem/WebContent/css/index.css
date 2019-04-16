@@ -1,0 +1,67 @@
+@charset "UTF-8";
+
+.login-block{
+	position:fixed; 
+	top:300px;
+	right:400px;
+	width: 250px;
+	background-color:#FFFFFF;
+	color:#000000;
+	height:320px;
+	border-radius:25px;
+}
+.login-body{
+	background-repeat:no-repeat;
+	background-size:100% 100%; 
+	background-attachment: fixed;
+}
+.login-title{
+	font-size:240%;
+	color:#FFFFFF;
+	text-align:center;
+	margin-top:30px;
+}
+.login-img{
+	height:540px;
+	width: 420px;
+	position:fixed; 
+	right:1000px;
+	top:200px;
+}
+.account{
+	font-size:55%;
+	color:#909090;
+	text-align:left;
+	left:18px;
+	position: relative;
+	top:20px;
+}
+.input-account{
+	border-radius:5px;
+	border: 1px solid #909090;
+	padding: 7px 25px;
+}
+.password{
+	font-size:55%;
+	color:#909090;
+	text-align:left;
+	position: relative;
+	left:18px;
+}
+.input-password{
+	border-radius:5px;
+	border: 1px solid #909090;
+	padding: 7px 25px;
+	top:-14px;
+	position: relative;
+}
+.button{
+	font-weight:600;
+	font-size:45%;
+	border-radius:10px;
+	color:#FFFFFF;
+	border: 1px solid #ccc;
+	width: 80px;
+	height:45px;
+	background-color:red
+}

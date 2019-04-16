@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<meta charset="UTF-8">
+<title>后台管理页面</title>
+</head>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$.ajax({
+			url:'serverConfig/listConfig',
+			type:'post',
+			dataType:"json",
+			success:function(res){
+				console.log(res);
+				$("#ip_local").html("当前主机名为:"+res.server_name);
+				$("#ip_ip").html("服务器当前IP地址为:"+res.server_ip);
+				$("#ip_dns").html("服务器当前DNS地址为:"+res.server_DNS);
+			},
+			error: function(res) {
+				console.log(res)
+            }
+		});
+	})
+	
+	function flash(){
+		$.ajax({
+			url:'serverConfig/updateConfig',
+			type:'post',
+			success:function(res){
+				$.ajax({
+					url:'serverConfig/listConfig',
+					type:'post',
+					dataType:"json",
+					success:function(res){
+						console.log(res);
+						$("#ip_local").html("当前主机名为:"+res.server_name);
+						$("#ip_ip").html("服务器当前IP地址为:"+res.server_ip);
+						$("#ip_dns").html("服务器当前DNS地址为:"+res.server_DNS);
+						alert("更新成功！")
+					},
+					error: function(res) {
+						console.log(res)
+		            }
+				});
+			},
+			error: function(res) {
+            }
+		});
+	}
+</script>
+<body class="body">
+<div class="title-box">
+	<div class="title-title">
+		<h1 class="title-text1">邮件系统</h1><h1 class="title-text2">后台管理</h1>
+	</div>
+</div>
+<div class="menu">
+	<a href="main.html" target="_self" class="is-select"><h2 class="menu-text">控制面板</h2></a>
+	<a href="user.html" target="_self" class="is-not-select"><h2 class="menu-text">用户管理</h2></a>
+	<a href="history.html" target="_self" class="is-not-select"><h2 class="menu-text">日志管理</h2></a>
+	<a href="system.html" target="_self" class="is-not-select"><h2 class="menu-text">系统管理</h2></a>
+</div>
+<div class="title-ip">
+	<h2 class="title-ip-title">欢迎使用邮件服务器</h2>
+	<div class="title-ip-txt">
+		<h3 id="ip_local">当前主机名为:</h3>
+		<h3 id="ip_ip">服务器当前IP地址为:</h3>
+		<h3 id="ip_dns">服务器当前DNS地址为:</h3>
+	</div>
+	<div class="button-flash" onclick="flash()">刷新ip</div>
+	<div class="button-run">运行服务器</div>
+</div>
+<div class="control">
+	<div class="block"></div>
+	<h2 class="smtp-text">STMP协议状态：协议已启动</h2>
+	<div class="button-smtp">启动SMTP协议</div>
+	<hr style="height:1px;border:none;border-top:1px dashed #0066CC;" />
+	<h2 class="pop3-text">POP3协议状态：协议已启动</h2>
+	<div class="button-pop3">启动POP3协议</div>
+</div>
+</body>
+</html>

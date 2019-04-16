@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="css/index.css">
+<meta charset="UTF-8">
+<title>邮件系统</title>
+</head>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script>
+	function test(){
+		var account=$("#account").val();
+		var password=$("#password").val();
+		$.ajax({
+			url:'AdminLogin',
+			type:'post',
+			data:{username: account, pass: password},
+			dataType:"json",
+			success:function(res){
+				if(res.result==1){
+					window.location.href = "main.html";
+				}
+				else if(res.result==01){
+					alert("密码错误！")
+				}
+				else{
+					alert("账号错误！")
+				}
+			},
+			error: function(res) {
+            }
+		});
+	}
+</script>
+<body background="img\back.jpg" class="login-body">
+	<h1 class="login-title">欢迎登陆邮件系统后台管理页面</h>
+	<img class="login-img" src="img\timg.jpg" alt="网络错误" />
+	<div class="login-block">
+		<form action="" method="get">
+  			<p class="account">账号: </p>
+  			<input class="input-account" id="account" type="text" name="account" />
+  			<p class="password" >密码:</p>
+  			<input class="input-password" id="password" type="password" name="password" />
+  			
+  			<input type="button" class="button" onclick="test()" value="提交"  />
+		</form>
+		<!--<button class="button" onclick="javascript:window.location.href='main.html';">提交</button>-->
+	</div>
+</body>
+</html>

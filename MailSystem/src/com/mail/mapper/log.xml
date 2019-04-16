@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+    <mapper namespace="LogMapper">
+    
+    	<select id="getAllLog" parameterType="Map" resultType="Log">
+    		select * from Log
+    		order by oper_time desc
+    		limit #{limit_start}, #{limit_size}
+   		</select>
+   		
+   		<update id="addLog" parameterType="Log">
+   			insert into Log(user, operation, oper_time)
+   			values(#{user}, #{operation}, #{oper_time})
+   		</update>
+   		
+    </mapper>

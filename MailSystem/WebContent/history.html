@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<meta charset="UTF-8">
+<title>后台管理页面</title>
+</head>
+<body class="body">
+<script>
+$(function(){
+	var cart_id = '${pd.cart_id}';
+	var goods_id = '${pd.goods_id}';
+	var goods_count = '${pd.goods_count}';
+	var attribute_detail_id = '${pd.attribute_detail_id}';
+	$.ajax({
+		url:'address/shdst',
+		type:'post',
+		success:function(data){
+			$('#show-addr-list').html('');
+			$.each(data,function(i,item){
+				var defalut_html = '';
+				if(item.is_default==1){
+					defalut_html = '<span class="default-add" onclick="window.location.href=\'toorder?address_id='+item.address_id+'&cart_id='+cart_id+'&goods_id='+goods_id+'&goods_count='+goods_count+'\'">默认地址</span>';
+				}
+				/* onclick="window.location.href=\'order/address/info?msg=edit&address_id='+item.address_id+'\'" */
+				$('#show-addr-list').append('<div class="weui-panel__bd">'+
+					    '<div class="weui-media-box weui-media-box_text address-list-box">'+
+				        '<a class="address-edit" onclick="window.location.href=\'order/address/info?msg=edit&address_id='+item.address_id+'\'"></a>'+
+				        '<h4 class="weui-media-box__title" onclick="window.location.href=\'toorder?address_id='+item.address_id+'&cart_id='+cart_id+'&goods_id='+goods_id+'&goods_count='+goods_count+'&attribute_detail_id='+attribute_detail_id+' \'"><span>'+item.addr_realname+'</span><span>'+item.addr_phone+'</span></h4>'+
+				        '<p  class="weui-media-box__desc address-txt" onclick="window.location.href=\'toorder?address_id='+item.address_id+'&cart_id='+cart_id+'&goods_id='+goods_id+'&goods_count='+goods_count+'&attribute_detail_id='+attribute_detail_id+'\'">'+item.addr_city+' '+item.address+'</p>'+
+				        defalut_html+
+				      '</div>'+
+				    '</div>');
+			})
+		}
+	})
+})
+</script>
+<div class="title-box">
+	<div class="title-title">
+		<h1 class="title-text1">邮件系统</h1><h1 class="title-text2">后台管理</h1>
+	</div>
+</div>
+<div class="menu">
+	<a href="main.html" target="_self" class="is-not-select"><h2 class="menu-text">控制面板</h2></a>
+	<a href="user.html" target="_self" class="is-not-select"><h2 class="menu-text">用户管理</h2></a>
+	<a href="history.html" target="_self" class="is-select"><h2 class="menu-text">日志管理</h2></a>
+	<a href="system.html" target="_self" class="is-not-select"><h2 class="menu-text">系统管理</h2></a>
+</div>
+</body>
+</html>

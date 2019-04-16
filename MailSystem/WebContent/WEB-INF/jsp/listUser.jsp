@@ -2,7 +2,7 @@
     pageEncoding="UTF-8" import="java.util.*"%>
   
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-  
+ <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
 <table align='center' border='1' cellspacing='0'>
     <tr>
         <td>id</td>
@@ -19,13 +19,25 @@
         </tr>
     </c:forEach>
 </table>
-
+<script>
+	function test(){
+		$.ajax({
+			url:'AdminLogin',
+			type:'post',
+			data:{username: '1', pass: '1'},
+			dataType: "text", 
+			success:function(res){
+				window.alert(res.result)
+			}
+		});
+	}
+</script>
 <div style="text-align:center;margin-top:40px">
 		
-		<form method="post" action="addUser">
+		<form method="post">
 			用户名： <input name="username" value="" type="text"> <br><br>
 			密码：<input name="password" value="" type="text"><br><br>
-			<input type="submit" value="增加用户">
+			<input type="button" value="增加用户" onclick="test()">
 		</form>
 
 	</div>	

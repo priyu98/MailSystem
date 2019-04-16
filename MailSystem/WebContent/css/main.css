@@ -1,0 +1,241 @@
+@charset "UTF-8";
+.body{
+	background-color:#eeeeee;
+}
+.title-box{
+	margin-top:-10px;
+	z-index:9998;
+	position:fixed;
+	width:100%;
+	background-color:#1e88e5;
+	height:65px;
+	box-shadow: darkgrey 0px 0px 20px 1px ;
+}
+.title-title{
+	z-index:9999;
+	position:fixed;
+	width:230px;
+	height:65px;
+	background-color:#0099FF;
+}
+.title-text1{
+	font-size:135%;
+	font-weight:700;
+	color:#FFFFFF;
+	position:fixed; 
+	top:7px;
+	left:20px;
+}
+.title-text2{
+	font-size:125%;
+	color:#FFFFFF;
+	position:fixed; 
+	top:8px;
+	left:120px;
+}
+.menu{
+	margin-top:55px;
+	position:fixed;
+	height:100%;
+	background-color:#FFFFFF;
+	text-align:center;
+	width:230px;
+	border-style: solid;
+  	border-right-width: 1px;
+  	border-top-width: 0px;
+  	border-bottom-width: 0px;
+  	border-left-width: 0px;
+  	border-color: #E8E8E8;
+  	box-shadow: darkgrey 0px 5px 20px 1px ;
+}
+.is-select{
+	margin-top:25px;
+	display: inline-block;
+	vertical-align: middle;
+	width:200px;
+	height:40px;
+	background-color:#05d0d6;
+	text-align:center;
+	color:#FFFFFF;
+	border-radius:5px;
+}
+.menu-text{
+	display: inline-block;
+	vertical-align: middle;
+	font-weight:800;
+	font-size:100%;
+}
+.is-not-select{
+	margin-top:25px;
+	display: inline-block;
+	vertical-align: middle;
+	width:200px;
+	height:40px;
+	text-align:center;
+	color:#b1abad;
+	border-radius:5px;
+}
+.title-ip{
+	position: absolute;
+	left:300px;
+	right:8px;
+	top:90px;
+	height:200px;
+	width:80%;
+	background-color:#FFFFFF;
+	box-shadow: darkgrey 0px 1px 25px 1px ;
+}
+.title-ip-title{
+	position: absolute;
+	top:8px;
+	left:35px;
+	color:#1e88e5;
+	font-weight:800;
+	font-size:130%;
+}
+.title-ip-txt{
+	position: absolute;
+	top:48px;
+	left:35px;
+	color:#0099FF;
+	font-size:100%;
+	font-weight:600;
+}
+.button-flash{
+	position: absolute;
+	top:130px;
+	left:570px;
+	height: 30px; 
+	width: 100px; 
+	color: #fff; 
+	background-color: #ff0000; 
+	line-height: 30px; 
+	text-align: center; 
+	font-weight: 600; 
+	font-size: 14px; 
+	border-radius: 4px;
+	cursor: pointer;
+}
+.button-run{
+	cursor: pointer;
+	position: absolute;
+	top:128px;
+	left:740px;
+	height: 30px; 
+	width: 100px; 
+	color: #fff; 
+	background-color: #ff0000; 
+	line-height: 30px; 
+	text-align: center; 
+	font-weight: 600; 
+	font-size: 14px; 
+	border-radius: 4px;
+}
+.control{
+	position: absolute;
+	left:300px;
+	right:70px;
+	top:350px;
+	width:80%;
+	background-color:#FFFFFF;
+	box-shadow: darkgrey 0px 0px 20px 1px ;
+	height:360px;
+}
+.smtp-text{
+	color: #00bbbb;
+	position: absolute;
+	top:60px;
+	left:100px;
+}
+.pop3-text{
+	color: #00bbbb;
+	height:100px;
+	position: absolute;
+	top:230px;
+	left:100px;
+}
+.button-smtp{
+	cursor: pointer;
+	position: absolute;
+	top:70px;
+	left:600px;
+	height: 46px; 
+	width: 150px; 
+	color: #fff; 
+	background-color: #ff0000; 
+	line-height: 40px; 
+	text-align: center; 
+	font-weight: 600; 
+	font-size: 16px; 
+	border-radius: 4px;
+}
+.button-pop3{
+	cursor: pointer;
+	position: absolute;
+	top:240px;
+	left:600px;
+	height: 46px; 
+	width: 150px; 
+	color: #fff; 
+	background-color: #ff0000; 
+	line-height: 40px; 
+	text-align: center; 
+	font-weight: 600; 
+	font-size: 16px; 
+	border-radius: 4px;
+}
+.block{
+	height:160px;
+}
+.user-search{
+	margin-top:55px;
+	margin-left:232px;
+	position:fixed; 
+	height:100px;
+	width:2000px;
+	background-color:#FFFFFF;
+}
+.search-text-title{
+	margin-left:50px;
+	font-size:135%;
+	font-weight:700;
+	color:#1e88e5;
+}
+.search-text-title1{
+	margin-left:80px;
+	font-size:100%;
+	font-weight:600;
+	color:#0099FF;
+}
+.input-search{
+	border-radius:5px;
+	width:300px;
+	border: 1px solid #909090;
+	padding: 7px 25px;
+	top:-36px;
+	left:250px;
+	position: relative;
+}
+.button-search{
+	cursor: pointer;
+	position: absolute;
+	top:60px;
+	left:700px;
+	height: 30px; 
+	width: 100px; 
+	color: #fff; 
+	background-color: #ff0000; 
+	line-height: 30px; 
+	text-align: center; 
+	font-weight: 600; 
+	font-size: 14px; 
+	border-radius: 4px;
+}
+.user-list{
+	margin-top:155px;
+	margin-left:232px;
+	width:2000px;
+	height:2000px;
+	position:fixed;
+	background-color:#FFFFFF;
+}
