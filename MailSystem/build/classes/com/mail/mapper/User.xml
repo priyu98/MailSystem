@@ -5,7 +5,7 @@
  
     <mapper namespace="UserMapper">
         <insert id="add" parameterType="Map" >
-            insert into users ( username,pwdHash,pwdAlgorithm,useForwarding,useAlias,password,ifAdmin ) values (#{username},#{pwdHash},"SHA",0,0,#{password},#{ifAdmin})   
+            insert into users ( username,pwdHash,pwdAlgorithm,useForwarding,useAlias,password) values (#{username},#{pwdHash},"SHA",0,0,#{password})   
         </insert>
          
         <delete id="delete" parameterType="String" >
@@ -36,5 +36,25 @@
         
         <select id="SensitiveWordSet" resultType="String">
         	select minganci from minganci
+        </select>
+        
+        <!-- 设为管理员 -->
+        <update id="SetAdmin" parameterType="Map">
+	        update users
+	        set ifAdmin=
+	        <if test="ifAdmin==0">
+	        =1
+	        </if>
+	        <if test="ifAdmin==1">
+	        =0
+	        </if>
+	        where username=#{username}
+        </update>
+        
+        <!-- username模糊查找 -->
+        <select id="searchByUsername" parameterType="Map" resultType="User">
+        	select * from users
+        	where username like concat(concat('%',#{username}),'%')
+        	LIMIT #{limit_start}, #{limit_size}
         </select>
     </mapper>

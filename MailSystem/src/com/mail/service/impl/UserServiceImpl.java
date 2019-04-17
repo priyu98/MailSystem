@@ -62,6 +62,19 @@ public class UserServiceImpl implements UserService {
 		return set;
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<User> searchByUsername(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return (List<User>)dao.findForList("UserMapper.searchByUsername", map);
+	}
+
+	@Override
+	public void SetAdmin(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		dao.update("UserMapper.SetAdmin", map);
+	}
+
 
 
 }

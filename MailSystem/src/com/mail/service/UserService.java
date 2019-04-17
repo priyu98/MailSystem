@@ -13,4 +13,6 @@ public interface UserService {
 	void editPassword(User user);
 	User getUserByUserid(String username);
 	Set<String> getSensitiveWordSet();
+	List<User> searchByUsername(Map<String,Object> map);
+	void SetAdmin(Map<String,Object> map);
 }

@@ -53,7 +53,12 @@ public class UserController {
 		String username=request.getParameter("username");
 		String password = request.getParameter("pass");
 		
+		
 		Map<String,Object> map = new HashMap<String,Object>();
+		if(userService.getUserByUserid(username)!=null) {
+			map.put("result", 0);
+			return gson.toJson(map);
+		}
 		//Set<String> sensitiveWord = userService.getSensitiveWordSet();
 		/*SensitiveWordUtil wordUtil = new SensitiveWordUtil();
 		wordUtil.initSensitiveWordsMap(sensitiveWord);
@@ -68,6 +73,7 @@ public class UserController {
 		return gson.toJson(map);
 	}
 	
+	@ResponseBody
 	@RequestMapping("deleteUser")
 	public String deleteUser(HttpServletRequest request) {
 		String username=request.getParameter("username");
@@ -127,5 +133,42 @@ public class UserController {
 		return gson.toJson(map);
 	}
 	
+	
+	//设置管理员
+	@RequestMapping("SetAdmin")
+	@ResponseBody
+	public String SetAdmin(HttpServletRequest request) {
+		Map<String, Object> map = new HashMap<>();
+		Map<String, Object> result = new HashMap<>();
+		
+		String username = request.getParameter("username");
+		map.put("username", username);
+		userService.SetAdmin(map);
+		result.put("result", 1);
+		return gson.toJson(result);
+	}
+	
+	/*
+	 * 模糊查找
+	 * params: username , page
+	 */
+	@RequestMapping("searchByUsername")
+	@ResponseBody
+	public String searchByUsername(HttpServletRequest request) {
+		Map<String, Object> map = new HashMap<>();
+		Map<String, Object> result = new HashMap<>();
+		
+		String username = request.getParameter("username");
+		int page = Integer.valueOf(request.getParameter("page"));
+		int limit_size = 20;
+		int limit_start = page*limit_size;
+		map.put("username", username);
+		map.put("limit_start", limit_start);
+		map.put("limit_size", limit_size);
+		
+		List<User> list = userService.searchByUsername(map);
+		result.put("list", list);
+		return gson.toJson(result);
+	}
 }
 
